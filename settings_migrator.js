@@ -1,7 +1,9 @@
 "use strict"
 
 const DefaultSettings = {
-    "enabled": true
+    "enabled": true,
+    "show_info_window": true,
+    "print_text": true
 }
 
 module.exports = function MigrateSettings(from_ver, to_ver, settings) {
@@ -13,6 +15,19 @@ module.exports = function MigrateSettings(from_ver, to_ver, settings) {
         return DefaultSettings;
     } else {
         // Migrate from older version (using the new system) to latest one
-        throw new Error('So far there is only one settings version and this should never be reached!');
+        if (from_ver + 1 < to_ver) {
+            // Recursively upgrade in one-version steps
+            settings = MigrateSettings(from_ver, from_ver + 1, settings);
+            return MigrateSettings(from_ver + 1, to_ver, settings);
+        }
+
+        switch(to_ver)
+        {
+            case 2:
+                settings = Object.assign(settings, DefaultSettings);
+                break;
+        }
+
+        return settings;
     }
 }
