@@ -45,7 +45,8 @@ module.exports = function Inspector(mod) {
 						equipment = event.boots
 						break;
 				}
-				mod.command.message(`\t${conv(equipment)} +${item.enchantment}`)				
+				if (equipment)
+					mod.command.message(`\t${conv(equipment)} +${item.enchantment}`)				
 			}
 		}
 
