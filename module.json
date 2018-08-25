@@ -1,4 +1,10 @@
 {
-    "servers": ["https://raw.githubusercontent.com/TeraProxy/Inspector/master/"],
-    "supportUrl": "https://github.com/TeraProxy/Inspector/issues"
+    "disableAutoUpdate": true,
+    "options": {
+        "niceName": "inspector",
+        "settingsVersion": 1,
+        "settingsFile": "config.json",
+        "settingsMigrator": "settings_migrator.js"
+    },
+    "servers": ["https://raw.githubusercontent.com/valkyr1e-tera/Inspector/master/"]
 }
