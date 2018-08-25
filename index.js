@@ -1,8 +1,8 @@
 'use strict'
 
-const strings = require('./strings')["item"]
-
 module.exports = function Inspector(mod) {
+	const items = Object.assign({}, require(`./items/items.${mod.region}.json`))
+
 	mod.command.add('inspect', () => {
 		mod.settings.enabled = !mod.settings.enabled
 		mod.command.message((mod.settings.enabled ? 'en' : 'dis') + 'abled')
@@ -12,9 +12,9 @@ module.exports = function Inspector(mod) {
 	mod.hook('S_OTHER_USER_APPLY_PARTY', 1, (event) => {
 		if (!mod.settings.enabled)
 			return
-		applied = true
 
 		if (!mod.game.me.inCombat) {
+			applied = true
 			mod.toServer('C_REQUEST_USER_PAPERDOLL_INFO', 1, {name: event.name})
 		}
 	})
@@ -23,27 +23,29 @@ module.exports = function Inspector(mod) {
 		if (!applied)
 			return
 
-		let text = `${event.name}(IL:${event.itemLevel}/${event.itemLevelInventory})`
-		if (event.guild != '')
-			text += `(Guild:${event.guild})`
-
 		if (mod.settings.print_text) {
+			let text = `${event.name}(IL:${event.itemLevel}/${event.itemLevelInventory})`
+			if (event.guild != '')
+				text += `(Guild:${event.guild})`
 			mod.command.message(text)
+
 			for (let item of event.items) {
+				let equipment
 				switch (item.slot) {
 					case 1: // weapon
-						mod.command.message(`\t${conv(event.weapon)}+${item.enchantment}`)
+						equipment = event.weapon
 						break;
 					case 3: // chest
-						mod.command.message(`\t${conv(event.chest)}+${item.enchantment}`)
+						equipment = event.chest
 						break;
 					case 4: // gloves
-						mod.command.message(`\t${conv(event.gloves)}+${item.enchantment}`)
+						equipment = event.gloves
 						break;
 					case 5: // boots
-						mod.command.message(`\t${conv(event.boots)}+${item.enchantment}`)
+						equipment = event.boots
 						break;
 				}
+				mod.command.message(`\t${conv(equipment)} +${item.enchantment}`)				
 			}
 		}
 
@@ -52,7 +54,7 @@ module.exports = function Inspector(mod) {
 			return false
 	})
 
-	function conv(s) {
-		return strings[s] || "Undefined"
+	function conv(id) {
+		return items[id] || "Unknown"
 	}
 }

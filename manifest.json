@@ -1,10 +1,10 @@
 {
 	"files": {
 		"LICENSE": "589ed823e9a84c56feb95ac58e7cf384626b9cbf4fda2a907bc36e103de1bad2",
-		"index.js": "f957a22e46b359a716bf9ae48ffdcdaba44c65e3593ac75e1972371b97e67f27",
+		"index.js": "56fbe368b35d0612dc237771e61a8d27aac70f3702b0a28a607316f5c76cb643",
+		"items/items.jp.json": "9a8bfa6528e453893c8e4b863fe86317b67f36f4cb5fe81c376ce9016b1c66d8",
 		"module.json": "b1cfe7561fd5e5d7e0d027b8d79729379909d30d031d3abc3b2638fe44de3112",
-		"settings_migrator.js": "0974b233303e2ad74641ef5bd573531d8490fd92d785e5b54387e7be93d79f1f",
-		"strings.json": "8c04f5cfe5df1004c13eeece6e463025a023c2adff931bc74e6a669bd986de96"
+		"settings_migrator.js": "0974b233303e2ad74641ef5bd573531d8490fd92d785e5b54387e7be93d79f1f"
 	},
 	"defs": {
 		"C_REQUEST_USER_PAPERDOLL_INFO": 1,
