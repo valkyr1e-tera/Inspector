@@ -32,21 +32,23 @@ module.exports = function Inspector(mod) {
 			for (let item of event.items) {
 				let equipment
 				switch (item.slot) {
-					case 1: // weapon
+					case 1:
 						equipment = event.weapon
 						break;
-					case 3: // chest
+					case 3:
 						equipment = event.chest
 						break;
-					case 4: // gloves
+					case 4:
 						equipment = event.gloves
 						break;
-					case 5: // boots
+					case 5:
 						equipment = event.boots
 						break;
 				}
-				if (equipment)
-					mod.command.message(`\t${conv(equipment)} +${item.enchantment}`)				
+				if (equipment) {
+					const str = items[equipment] || "Unknown"
+					mod.command.message(`\t${str} +${item.enchantment}`)				
+				}
 			}
 		}
 
@@ -54,8 +56,4 @@ module.exports = function Inspector(mod) {
 		if (!mod.settings.show_info_window)
 			return false
 	})
-
-	function conv(id) {
-		return items[id] || "Unknown"
-	}
 }
