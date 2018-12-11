@@ -1,9 +1,7 @@
 "use strict"
 
 const DefaultSettings = {
-    "enabled": true,
-    "show_info_window": true,
-    "print_text": true
+    "enabled": true
 }
 
 module.exports = function MigrateSettings(from_ver, to_ver, settings) {
@@ -25,6 +23,9 @@ module.exports = function MigrateSettings(from_ver, to_ver, settings) {
         {
             case 2:
                 settings = Object.assign(settings, DefaultSettings);
+                break;
+            case 3:
+                settings = DefaultSettings;
                 break;
         }
 
