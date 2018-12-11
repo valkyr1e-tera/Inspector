@@ -1,5 +1,3 @@
-"use strict"
-
 const DefaultSettings = {
     "enabled": true
 }

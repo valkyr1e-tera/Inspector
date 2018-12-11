@@ -1,8 +1,8 @@
 {
 	"files": {
-		"index.js": "e9e012dc320e3ee16d9f28f65b4e297de41eda667bc3085f708e2162eaf60cdd",
-		"module.json": "d246807c693420a7aacb4f24249ccd2f78edad440644562bb971dd5d3d98581e",
-		"settings_migrator.js": "71edf9538de53ba161f76d6dc71f87007088e87b184f5b0c845e02d899f1ca96"
+		"index.js": "9873cca8a0a106bedc2c4624760c9b1440cd2f97936edc3419882c7dcd75a4bc",
+		"module.json": "17a1abff8fc751643c05506a2276327517a1d40f627fff32b7ddb46bc15d0bc8",
+		"settings_migrator.js": "7df66a47e056624ebd12b7d45659458c7dc887ff8d2b01f66c4dd36903655ae1"
 	},
 	"defs": {
 		"C_REQUEST_USER_PAPERDOLL_INFO": 1,
